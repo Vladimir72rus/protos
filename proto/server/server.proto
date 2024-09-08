@@ -1,0 +1,36 @@
+syntax = "proto3";
+
+package auth;
+
+option go_package = "izosimov.server.v1;serverv1";
+
+service Auth {
+	rpc Register (RegisterRequest) returns (AuthResponse);
+	rpc Login (LoginRequest) returns (AuthResponse);
+}
+
+message RegisterRequest {
+	string login = 1;
+	string password = 2;
+}
+
+message AuthResponse {
+	int64 id = 1;
+  string login = 2;
+  string email = 3;
+  string name = 4;
+  string department = 5;
+  string position = 6;
+  int64 city = 7;
+  bool banned = 8;
+  string banReason = 9;
+  bool veryfy = 10;
+  int64 createdAt = 11;
+  int64 updateAt = 12;
+	string accessToken = 13;
+}
+
+message LoginRequest {
+	string login = 1;
+	string password = 2;
+}
